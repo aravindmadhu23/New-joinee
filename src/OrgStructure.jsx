@@ -13,7 +13,7 @@ export default function OrgStructure({ onBack }) {
         { name: "Anto Hilorian Cruz", role: "CFO", dept: "Finance", icon: <ShieldCheck size={16} /> },
         { name: "Bevis Oswin", role: "Software Head", dept: "Software", icon: <Monitor size={16} /> },
         { name: "Jim Andrew", role: "Art Dept Head", dept: "Art", icon: <Palette size={16} /> },
-        { name: "Smithy Sekhar", role: "Compliance / QA Dept Head", dept: "Compliance & QA", icon: <Search size={16} /> },
+        { name: "Smithy Sekhar", role: "Compliance / QA Dept Head/AI research Head", dept: "Compliance & QA/AI research"icon: <Search size={16} /> },
     ];
 
     const artDept = [

@@ -56,7 +56,7 @@ const App = () => {
     { name: "Sujan Christo", role: "Chief Operating Officer", image: "sujan-christo.png" },
     { name: "Franklin Jose", role: "Head of Human Resources", image: "franklin-jose.png" },
     { name: "Jim Andrew", role: "Head of Art Department", image: "jim-andrew.png" },
-    { name: "Smithy Sekhar", role: "Head of Compliance/QA", image: "smithy-sekhar.png" }
+    { name: "Smithy Sekhar", role: "Head of Compliance/QA/AI research", image: "smithy-sekhar.png" }
   ];
 
   // IF VIEW IS MANAGEMENT, SHOW THE NEW PAGE

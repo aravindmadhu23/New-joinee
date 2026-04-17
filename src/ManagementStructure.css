@@ -1,0 +1,448 @@
+/* ================================================
+   MANAGEMENT STRUCTURE — FLOWCHART DESIGN
+   ================================================ */
+
+/* ===== WRAPPER ===== */
+.flow-wrapper {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef4fb 40%, #f0f4f8 100%);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: #1e293b;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.flow-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ===== TOP BAR ===== */
+.flow-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 18px 0;
+  background: rgba(248, 250, 252, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.flow-back-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.88rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.flow-back-btn:hover {
+  background: #00AEEF;
+  color: white;
+  border-color: #00AEEF;
+  box-shadow: 0 6px 20px rgba(0, 174, 239, 0.25);
+}
+
+/* ===== HERO SECTION WITH RADIAL GLOW ===== */
+.flow-hero {
+  padding: 140px 0 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* PRIMARY radial glow — bright blue */
+.flow-hero__glow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 174, 239, 0.22) 0%,
+    rgba(0, 174, 239, 0.10) 30%,
+    rgba(0, 174, 239, 0.03) 55%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+/* SECONDARY glow — indigo spread */
+.flow-hero__glow--alt {
+  top: 25%;
+  width: 1100px;
+  height: 1100px;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.10) 0%,
+    rgba(99, 102, 241, 0.04) 35%,
+    transparent 60%
+  );
+  animation: glowPulse 6s ease-in-out infinite reverse;
+}
+
+/* TERTIARY glow — warm accent */
+.flow-hero__glow--warm {
+  top: 35%;
+  left: 55%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.12) 0%,
+    rgba(14, 165, 233, 0.04) 40%,
+    transparent 65%
+  );
+  animation: glowPulse 8s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.12); }
+}
+
+.flow-hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.flow-hero__badge {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #00AEEF;
+  background: rgba(0, 174, 239, 0.07);
+  padding: 10px 24px;
+  border-radius: 50px;
+  display: inline-block;
+  border: 1px solid rgba(0, 174, 239, 0.12);
+}
+
+.flow-hero__title {
+  font-size: 3.8rem;
+  font-weight: 900;
+  margin: 28px 0 18px;
+  letter-spacing: -2px;
+  color: #0f172a;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #0f172a 0%, #1e40af 60%, #00AEEF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  display: inline-block;
+}
+
+/* Soft glow behind title text */
+.flow-hero__title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 180%;
+  background: radial-gradient(
+    ellipse,
+    rgba(0, 174, 239, 0.10) 0%,
+    rgba(0, 174, 239, 0.04) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+.flow-hero__desc {
+  color: #64748b;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin: 0 auto;
+  max-width: 480px;
+}
+
+/* ===== FLOWCHART BODY ===== */
+.flow-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+/* ===== FLOW ROW (horizontal group) ===== */
+.flow-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 960px;
+}
+
+.flow-row--center {
+  justify-content: center;
+}
+
+.flow-row--spread {
+  justify-content: center;
+}
+
+/* ===== VERTICAL CONNECTOR ===== */
+.flow-vline-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 6px 0;
+}
+
+.flow-vline {
+  width: 2.5px;
+  background: linear-gradient(180deg, #00AEEF 0%, rgba(0, 174, 239, 0.3) 100%);
+  border-radius: 2px;
+  transform-origin: top;
+  position: relative;
+  box-shadow: 0 0 8px rgba(0, 174, 239, 0.15);
+}
+
+/* ===== ANIMATED DIVIDER ===== */
+.flow-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin: 36px 0 28px;
+}
+
+.flow-divider__line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 174, 239, 0.15) 20%, rgba(0, 174, 239, 0.35) 50%, rgba(0, 174, 239, 0.15) 80%, transparent);
+  transform-origin: center;
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* Shimmer animation on divider lines */
+.flow-divider__line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 174, 239, 0.6), transparent);
+  animation: dividerShimmer 3s ease-in-out infinite;
+}
+
+@keyframes dividerShimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+.flow-divider__label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #00AEEF;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  padding: 8px 22px;
+  background: linear-gradient(135deg, rgba(0, 174, 239, 0.06), rgba(99, 102, 241, 0.04));
+  border: 1px solid rgba(0, 174, 239, 0.14);
+  border-radius: 50px;
+  box-shadow: 0 2px 12px rgba(0, 174, 239, 0.06);
+}
+
+/* ===== FLOW NODE (each person) ===== */
+.flow-node {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  padding: 22px 28px;
+  text-align: center;
+  min-width: 180px;
+  max-width: 220px;
+  cursor: default;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 8px 24px rgba(0, 0, 0, 0.02);
+}
+
+/* Executive tier  — larger, prominent */
+.flow-node--executive {
+  min-width: 260px;
+  max-width: 320px;
+  padding: 28px 36px;
+  background: linear-gradient(145deg, #ffffff, #f0f9ff);
+  border: 2px solid rgba(0, 174, 239, 0.18);
+  box-shadow: 0 4px 16px rgba(0, 174, 239, 0.06), 0 12px 32px rgba(0, 0, 0, 0.03);
+}
+
+.flow-node--executive::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00AEEF, #6366f1);
+  border-radius: 18px 18px 0 0;
+}
+
+/* Team tier — compact */
+.flow-node--team {
+  min-width: 160px;
+  max-width: 200px;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+}
+
+/* Default tier */
+.flow-node--default {
+  min-width: 185px;
+  max-width: 230px;
+}
+
+/* Node badge */
+.flow-node__badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: #00AEEF;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(0, 174, 239, 0.07);
+  padding: 4px 14px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(0, 174, 239, 0.08);
+}
+
+.flow-node--executive .flow-node__badge {
+  font-size: 0.7rem;
+  background: linear-gradient(135deg, rgba(0, 174, 239, 0.1), rgba(99, 102, 241, 0.08));
+  border-color: rgba(0, 174, 239, 0.15);
+  padding: 5px 18px;
+}
+
+/* Node name */
+.flow-node__name {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+}
+
+.flow-node--executive .flow-node__name {
+  font-size: 1.3rem;
+  letter-spacing: -0.5px;
+}
+
+.flow-node--team .flow-node__name {
+  font-size: 0.95rem;
+}
+
+/* Node role */
+.flow-node__role {
+  margin: 6px 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.flow-node--executive .flow-node__role {
+  font-size: 0.88rem;
+  color: #00AEEF;
+  font-weight: 700;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .flow-hero__title {
+    font-size: 2.5rem;
+  }
+
+  .flow-hero {
+    padding: 120px 0 70px;
+  }
+
+  .flow-container {
+    padding: 0 16px;
+  }
+
+  .flow-row {
+    gap: 12px;
+  }
+
+  .flow-node {
+    min-width: 140px;
+    max-width: 100%;
+    flex: 1;
+    padding: 16px 18px;
+  }
+
+  .flow-node--executive {
+    min-width: 200px;
+    max-width: 100%;
+  }
+
+  .flow-divider {
+    gap: 12px;
+    margin: 20px 0 18px;
+  }
+
+  .flow-divider__label {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    padding: 5px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flow-hero__title {
+    font-size: 2rem;
+  }
+
+  .flow-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flow-node,
+  .flow-node--executive,
+  .flow-node--team,
+  .flow-node--default {
+    min-width: 0;
+    max-width: 300px;
+    width: 100%;
+  }
+}
